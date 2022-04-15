@@ -11,6 +11,4 @@ export const StyledText = styled.Text`
   color: #ffffff;
   font-weight: 600;
   font-size: 18px;
-  line-height: 137.19%;
-  letter-spacing: 0.06em;
 `
