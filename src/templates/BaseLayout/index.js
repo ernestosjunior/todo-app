@@ -8,9 +8,7 @@ function BaseLayout({ children }) {
     <Container>
       <Ellipse />
       <KeyboardAvoidingView>
-        <ScrollView>
-          <Main>{children}</Main>
-        </ScrollView>
+        <Main>{children}</Main>
       </KeyboardAvoidingView>
     </Container>
   )

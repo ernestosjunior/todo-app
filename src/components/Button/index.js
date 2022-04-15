@@ -4,7 +4,7 @@ import { Container, StyledText } from './styles'
 
 function Button({ label, onClick }) {
   return (
-    <Pressable onPress={onClick}>
+    <Pressable onPress={onClick} style={{ alignItems: 'center' }}>
       <Container>
         <StyledText>{label}</StyledText>
       </Container>
