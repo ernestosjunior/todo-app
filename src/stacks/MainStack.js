@@ -8,7 +8,7 @@ function MainStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="SignUp">
+      initialRouteName="Splash">
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
