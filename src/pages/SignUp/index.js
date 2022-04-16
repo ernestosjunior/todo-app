@@ -3,8 +3,11 @@ import { Pressable } from 'react-native'
 import { BaseLayout } from '../../templates'
 import { Input, Button } from '../../components'
 import { Title, Subtitle, Form, RedirectButton, Text, Link } from './styles'
+import { useNavigation } from '@react-navigation/native'
 
 function SignUp() {
+  const { navigate } = useNavigation()
+
   return (
     <BaseLayout>
       <Title>Welcome Onboard!</Title>
@@ -17,7 +20,9 @@ function SignUp() {
       </Form>
       <Button label="Register" />
       <RedirectButton>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <Pressable
+          style={{ flexDirection: 'row', justifyContent: 'center' }}
+          onPress={() => navigate('SignIn')}>
           <Text>Don’t have an account ?</Text>
           <Link>Sign Up</Link>
         </Pressable>
