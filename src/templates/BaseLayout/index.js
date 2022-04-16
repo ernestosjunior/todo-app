@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardAvoidingView, ScrollView } from 'react-native'
+import { KeyboardAvoidingView, Platform, View } from 'react-native'
 import { Container, Main } from './styles'
 import Ellipse from '../../assets/svgs/ellipse.svg'
 
@@ -7,8 +7,16 @@ function BaseLayout({ children }) {
   return (
     <Container>
       <Ellipse />
-      <KeyboardAvoidingView>
-        <Main>{children}</Main>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'space-around',
+          }}>
+          <Main>{children}</Main>
+        </View>
       </KeyboardAvoidingView>
     </Container>
   )
