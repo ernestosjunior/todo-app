@@ -11,13 +11,15 @@ function Input({
   type = 'text',
   visible = false,
   setVisible = () => null,
+  capitalize = 'none',
 }) {
   const isPassword = type === 'password'
 
   return (
     <Container>
       <TextInput
-        secureTextEntry={visible}
+        autoCapitalize={capitalize}
+        secureTextEntry={isPassword && !visible}
         placeholder={placeholder}
         placeholderTextColor="black"
         onChangeText={onChange}

@@ -3,16 +3,21 @@ import { freeze } from '../../utils/freeze'
 
 export default () => {
   const [loading, setLoading] = useState(false)
-  const [form, setForm] = useState({ email: '', password: '' })
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
   const [visible, setVisible] = useState(false)
 
   const handleForm = (field, value) => {
     setForm(prev => ({ ...prev, [field]: value }))
   }
 
-  const handleLogin = async () => {
-    setLoading(true)
+  const handleRegister = async () => {
     try {
+      setLoading(true)
       await freeze()
     } catch (error) {
     } finally {
@@ -20,5 +25,12 @@ export default () => {
     }
   }
 
-  return { loading, handleLogin, form, handleForm, visible, setVisible }
+  return {
+    loading,
+    form,
+    visible,
+    setVisible,
+    handleForm,
+    handleRegister,
+  }
 }

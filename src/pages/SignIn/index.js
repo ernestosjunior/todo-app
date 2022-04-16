@@ -22,18 +22,18 @@ function SignIn() {
         <Input
           placeholder="Enter your email"
           value={form.email}
-          onChange={value => handleForm('email', value.toLowerCase())}
+          onChange={value => handleForm('email', value)}
         />
         <Input
           placeholder="Enter password"
           value={form.password}
-          onChange={value => handleForm('password', value.toLowerCase())}
+          onChange={value => handleForm('password', value)}
           type="password"
           visible={visible}
           setVisible={setVisible}
         />
       </Form>
-      <Button label="Sign In" onClick={() => handleLogin()}>
+      <Button label="Sign In" onClick={() => handleLogin()} disabled={loading}>
         {loading && <ActivityIndicator color="#FFFFFF" />}
       </Button>
       <RedirectButton>
