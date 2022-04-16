@@ -2,11 +2,11 @@ import React from 'react'
 import { Pressable } from 'react-native'
 import { Container, StyledText } from './styles'
 
-function Button({ label, onClick }) {
+function Button({ label, onClick, children }) {
   return (
     <Pressable onPress={onClick} style={{ alignItems: 'center' }}>
       <Container>
-        <StyledText>{label}</StyledText>
+        {!children ? <StyledText>{label}</StyledText> : children}
       </Container>
     </Pressable>
   )
