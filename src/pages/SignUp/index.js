@@ -23,8 +23,8 @@ function SignUp() {
         <Pressable
           style={{ flexDirection: 'row', justifyContent: 'center' }}
           onPress={() => navigate('SignIn')}>
-          <Text>Don’t have an account ?</Text>
-          <Link>Sign Up</Link>
+          <Text>Already have an account ?</Text>
+          <Link>Sign In</Link>
         </Pressable>
       </RedirectButton>
     </BaseLayout>
