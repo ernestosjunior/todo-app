@@ -12,7 +12,10 @@ export default () => {
   const handleLogin = async () => {
     setLoading(true)
     try {
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setLoading(false)
+    }
   }
 
   return { loading, handleLogin, form, handleForm, visible, setVisible }
