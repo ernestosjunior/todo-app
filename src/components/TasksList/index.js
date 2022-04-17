@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, Pressable } from 'react-native'
 import { Container, InputContainer, TaskContainer, Optin, Text } from './styles'
 import Plus from '../../assets/svgs/plus.svg'
 
-function TasksList({ tasks = [] }) {
+function TasksList({ tasks = [], onClick }) {
   const [visible, setVisible] = useState(false)
 
   return (
@@ -19,10 +19,12 @@ function TasksList({ tasks = [] }) {
       </InputContainer>
       {!!tasks.length &&
         tasks.map(task => (
-          <TaskContainer key={task.id}>
-            <Optin checked={task.checked} />
-            <Text>{task.todo}</Text>
-          </TaskContainer>
+          <Pressable key={task.id} onPress={() => onClick(task.id)}>
+            <TaskContainer>
+              <Optin checked={task.checked} onPress={() => alert('alert')} />
+              <Text>{task.todo}</Text>
+            </TaskContainer>
+          </Pressable>
         ))}
     </Container>
   )
