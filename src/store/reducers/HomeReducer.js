@@ -14,7 +14,13 @@ export const HomeReducer = (state, action) => {
     case 'setUser':
       return {
         ...state,
-        user: { ...state.user, [action.payload.field]: action.payload.value },
+        user: action.payload.user,
+      }
+      break
+    case 'setTasks':
+      return {
+        ...state,
+        tasks: action.payload.tasks,
       }
       break
     default:

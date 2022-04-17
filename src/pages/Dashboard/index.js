@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { KeyboardAvoidingView, Platform, View, StyleSheet } from 'react-native'
 import {
   Container,
@@ -10,15 +10,36 @@ import {
 } from './styles'
 import { TasksList } from '../../components'
 import Ellipse from '../../assets/svgs/ellipse2.svg'
-import { faker } from '@faker-js/faker'
+import { useHome } from '../../store'
+import { getTasks } from '../../services/api'
 
-function Dashboard({ name = 'user', img }) {
+function Dashboard() {
+  const {
+    homeState: {
+      user: { name, photo },
+      tasks,
+    },
+    homeDispatch,
+  } = useHome()
+
+  useEffect(() => {
+    async function fetchTasks() {
+      const res = await getTasks('id')
+      homeDispatch({ type: 'setTasks', payload: { tasks: res } })
+    }
+    fetchTasks()
+  }, [])
+
+  const handleUpdate = id => {
+    console.log(id)
+  }
+
   return (
     <Container>
       <EllipseContainer>
         <Ellipse style={styles.ellipse} />
         <ProfileSection>
-          <Image source={{ uri: faker.image.avatar() }} resizeMode="cover" />
+          <Image source={{ uri: photo }} resizeMode="cover" />
           <Name>{`Welcome, ${name}`}</Name>
         </ProfileSection>
       </EllipseContainer>
@@ -31,7 +52,7 @@ function Dashboard({ name = 'user', img }) {
             justifyContent: 'flex-start',
           }}>
           <Main>
-            <TasksList />
+            <TasksList tasks={tasks} onClick={id => handleUpdate(id)} />
           </Main>
         </View>
       </KeyboardAvoidingView>

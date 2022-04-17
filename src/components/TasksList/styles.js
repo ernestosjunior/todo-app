@@ -28,10 +28,12 @@ export const Optin = styled.View`
   background-color: ${props => (props.checked ? '#50C2C9' : '#FFFFFF')};
 `
 export const Text = styled.Text`
+  max-width: 90%;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: rgba(0, 0, 0, 0.75);
+  color: ${props =>
+    props.checked ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.75)'};
 `
