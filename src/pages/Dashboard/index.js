@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardAvoidingView, Platform, View } from 'react-native'
+import { KeyboardAvoidingView, Platform, View, StyleSheet } from 'react-native'
 import {
   Container,
   Main,
@@ -8,19 +8,18 @@ import {
   Image,
   Name,
 } from './styles'
+import { TasksList } from '../../components'
 import Ellipse from '../../assets/svgs/ellipse2.svg'
 import { faker } from '@faker-js/faker'
 
-function Dashboard() {
+function Dashboard({ name = 'user', img }) {
   return (
     <Container>
       <EllipseContainer>
-        <Ellipse />
+        <Ellipse style={styles.ellipse} />
         <ProfileSection>
-          <Image source={{ uri: faker.image.avatar() }} />
-          <Name>
-            {`Welcome, ${faker.name.firstName()} ${faker.name.lastName()}`}
-          </Name>
+          <Image source={{ uri: faker.image.avatar() }} resizeMode="cover" />
+          <Name>{`Welcome, ${name}`}</Name>
         </ProfileSection>
       </EllipseContainer>
       <KeyboardAvoidingView
@@ -29,13 +28,19 @@ function Dashboard() {
         <View
           style={{
             flex: 1,
-            justifyContent: 'space-around',
+            justifyContent: 'flex-start',
           }}>
-          <Main></Main>
+          <Main>
+            <TasksList />
+          </Main>
         </View>
       </KeyboardAvoidingView>
     </Container>
   )
 }
+
+const styles = StyleSheet.create({
+  ellipse: { position: 'absolute', left: 0 },
+})
 
 export default Dashboard

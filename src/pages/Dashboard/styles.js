@@ -10,16 +10,18 @@ export const EllipseContainer = styled.View`
   height: 36%;
   background-color: #50c2c9;
   position: relative;
+  align-items: center;
 `
 
 export const Main = styled.View`
   width: 100%;
   margin-top: 59px;
+  padding: 0 20px;
 `
 export const ProfileSection = styled.View`
   align-items: center;
   position: absolute;
-  right: 20%;
+  margin: 0 auto;
   top: 45%;
 `
 
